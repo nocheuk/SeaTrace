@@ -1,22 +1,32 @@
 {
   "expo": {
-    "name": "seatrace-app",
-    "slug": "seatrace-app",
+    "name": "SeaTrace",
+    "slug": "seatrace",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "seatraceapp",
+    "scheme": "seatrace",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "SeaTrace uses your location to show nearby coastal reports and pin your observations.",
+        "NSCameraUsageDescription": "SeaTrace uses the camera to photograph coastal observations.",
+        "NSPhotoLibraryUsageDescription": "SeaTrace lets you attach photos from your library to reports."
+      }
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#DDF4EF",
         "foregroundImage": "./assets/images/android-icon-foreground.png",
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "CAMERA"
+      ],
       "predictiveBackGestureEnabled": false
     },
     "web": {
@@ -31,12 +41,29 @@
         {
           "image": "./assets/images/splash-icon.png",
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#DDF4EF"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow SeaTrace to use your location for coastal reporting."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow SeaTrace to access photos for coastal reports.",
+          "cameraPermission": "Allow SeaTrace to take photos of coastal observations."
         }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "supabaseUrl": "",
+      "supabaseAnonKey": ""
     }
   }
 }
